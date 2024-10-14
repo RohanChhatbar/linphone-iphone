@@ -130,14 +130,14 @@ static UICompositeViewDescription *compositeDescription = nil;
 											   name:kLinphoneAccountCreationAuthenticationTokenReceived
 											 object:nil];
 
-	if (!mustRestoreView) {
-		new_account = NULL;
-		MSList *accounts = [LinphoneManager.instance createAccountsNotHiddenList];
-		number_of_accounts_before = bctbx_list_size(accounts);
-		bctbx_free(accounts);
-		[self resetTextFields];
-		[self changeView:_welcomeView back:FALSE animation:FALSE];
-	}
+//	if (!mustRestoreView) {
+//		new_account = NULL;
+//		MSList *accounts = [LinphoneManager.instance createAccountsNotHiddenList];
+//		number_of_accounts_before = bctbx_list_size(accounts);
+//		bctbx_free(accounts);
+//		[self resetTextFields];
+//		[self changeView:_welcomeView back:FALSE animation:FALSE];
+//	}
 	mustRestoreView = NO;
 	_outgoingView = DialerView.compositeViewDescription;
     _qrCodeButton.hidden = !ENABLE_QRCODE;
@@ -159,6 +159,8 @@ static UICompositeViewDescription *compositeDescription = nil;
 	_acceptText.attributedText = attributedString;
 	_acceptText.editable = NO;
 	_acceptText.delegate = self;
+    
+    [self changeView:_loginView back:FALSE animation:FALSE];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -237,7 +239,7 @@ static UICompositeViewDescription *compositeDescription = nil;
 - (void)reset {
 	[LinphoneManager.instance removeAllAccounts];
 	[self resetTextFields];
-	[self changeView:_welcomeView back:FALSE animation:FALSE];
+//	[self changeView:_welcomeView back:FALSE animation:FALSE];
 	_waitView.hidden = TRUE;
 }
 
@@ -753,7 +755,7 @@ static UICompositeViewDescription *compositeDescription = nil;
 #if DEBUG
 		UIAssistantTextField *atf =
 			(UIAssistantTextField *)[self findView:ViewElement_Domain inView:view ofType:UIAssistantTextField.class];
-		atf.text = @"test.linphone.org";
+		atf.text = @"";
 #endif
 	}
 	phone_number_length = 0;
@@ -1907,12 +1909,12 @@ UIColor *previousColor = (UIColor*)[sender backgroundColor]; \
 }
 
 - (IBAction)onBackClick:(id)sender {
-	if ([historyViews count] > 0) {
-		if (currentView == _createAccountActivateSMSView || currentView == _createAccountActivateEmailView || currentView == _qrCodeView) {
-			UIView *view = [historyViews lastObject];
-			[historyViews removeLastObject];
-			[self changeView:view back:TRUE animation:TRUE];
-		} else if (currentView == _welcomeView) {
+    if ([historyViews count] > 0) {
+        if (currentView == _createAccountActivateSMSView || currentView == _createAccountActivateEmailView || currentView == _qrCodeView) {
+            UIView *view = [historyViews lastObject];
+            [historyViews removeLastObject];
+            [self changeView:view back:TRUE animation:TRUE];
+        } else if (currentView == _welcomeView || currentView == _loginView) {
 			[PhoneMainView.instance popCurrentView];
 		} else {
 			[self changeView:_welcomeView back:TRUE animation:TRUE];

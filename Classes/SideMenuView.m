@@ -77,7 +77,8 @@
 		LinphoneAddress *addr = linphone_core_get_primary_contact_parsed(LC);
 		if (addr) {
 			char *as_string = linphone_address_as_string(addr);
-			_addressLabel.text = [NSString stringWithFormat:@"%s", as_string];
+//			_addressLabel.text = [NSString stringWithFormat:@"%s", as_string];
+            _addressLabel.text = NSLocalizedString(@"No address", nil);
 			ms_free(as_string);
 			linphone_address_unref(addr);
 		} else {
@@ -95,16 +96,16 @@
 #pragma deploymate pop
 
 - (IBAction)onHeaderClick:(id)sender {
-	[PhoneMainView.instance changeCurrentView:SettingsView.compositeViewDescription];
-	[PhoneMainView.instance.mainViewController hideSideMenu:YES];
+//	[PhoneMainView.instance changeCurrentView:SettingsView.compositeViewDescription];
+//	[PhoneMainView.instance.mainViewController hideSideMenu:YES];
 }
 
 - (IBAction)onAvatarClick:(id)sender {
 	// hide ourself because we are on top of image picker
-	if (!IPAD) {
-		[PhoneMainView.instance.mainViewController hideSideMenu:YES];
-	}
-	[ImagePickerView SelectImageFromDevice:self atPosition:_avatarImage inView:self.view withDocumentMenuDelegate:nil];
+//	if (!IPAD) {
+//		[PhoneMainView.instance.mainViewController hideSideMenu:YES];
+//	}
+//	[ImagePickerView SelectImageFromDevice:self atPosition:_avatarImage inView:self.view withDocumentMenuDelegate:nil];
 }
 
 - (IBAction)onBackgroundClicked:(id)sender {

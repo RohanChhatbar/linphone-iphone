@@ -28,7 +28,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>0</string>
+			<string>1</string>
 			<key>Key</key>
 			<string>debugenable_preference</string>
 			<key>Title</key>

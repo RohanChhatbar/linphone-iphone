@@ -81,20 +81,20 @@
 	}
 
     
-	[_sideMenuEntries
-		addObject:[[SideMenuEntry alloc] initWithTitle:NSLocalizedString(@"Settings", nil)
-                                                 image:[UIImage imageNamed:@"menu_options.png"]
-											  tapBlock:^() {
-												[PhoneMainView.instance
-													changeCurrentView:SettingsView.compositeViewDescription];
-											  }]];
-    [_sideMenuEntries
-     addObject:[[SideMenuEntry alloc] initWithTitle:NSLocalizedString(@"Recordings", nil)
-                                              image:[UIImage imageNamed:@"menu_recordings.png"]
-                                           tapBlock:^() {
-                                               [PhoneMainView.instance
-                                                changeCurrentView:RecordingsListView.compositeViewDescription];
-                                           }]];
+//	[_sideMenuEntries
+//		addObject:[[SideMenuEntry alloc] initWithTitle:NSLocalizedString(@"Settings", nil)
+//                                                 image:[UIImage imageNamed:@"menu_options.png"]
+//											  tapBlock:^() {
+//												[PhoneMainView.instance
+//													changeCurrentView:SettingsView.compositeViewDescription];
+//											  }]];
+//    [_sideMenuEntries
+//     addObject:[[SideMenuEntry alloc] initWithTitle:NSLocalizedString(@"Recordings", nil)
+//                                              image:[UIImage imageNamed:@"menu_recordings.png"]
+//                                           tapBlock:^() {
+//                                               [PhoneMainView.instance
+//                                                changeCurrentView:RecordingsListView.compositeViewDescription];
+//                                           }]];
 	InAppProductsManager *iapm = LinphoneManager.instance.iapManager;
 	if (iapm.enabled){
 		[_sideMenuEntries
@@ -118,13 +118,13 @@
 																}]];
 	}
 	
-	[_sideMenuEntries addObject:[[SideMenuEntry alloc] initWithTitle:NSLocalizedString(@"About", nil)
-                                                               image:[UIImage imageNamed:@"menu_about.png"]
-															tapBlock:^() {
-															  [PhoneMainView.instance
-																  changeCurrentView:AboutView.compositeViewDescription];
-
-															}]];
+//	[_sideMenuEntries addObject:[[SideMenuEntry alloc] initWithTitle:NSLocalizedString(@"About", nil)
+//                                                               image:[UIImage imageNamed:@"menu_about.png"]
+//															tapBlock:^() {
+//															  [PhoneMainView.instance
+//																  changeCurrentView:AboutView.compositeViewDescription];
+//
+//															}]];
 }
 
 #pragma mark - Table View Controller
